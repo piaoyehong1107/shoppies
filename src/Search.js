@@ -14,6 +14,13 @@ class Search extends React.Component {
             nominatedMovie: [...this.state.nominatedMovie, ele.Title+"/"+ele.Year]
         })
     }
+    removeFromNomi=(ele)=>{
+        localStorage.removeItem(ele)
+        this.setState({
+            nominatedMovie: this.state.nominatedMovie.filter(e=> e!=ele)
+        })
+        console.log(ele)
+    }
     componentDidMount(){
         this.setState({
             nominatedMovie: Object.keys(localStorage)
@@ -69,6 +76,7 @@ class Search extends React.Component {
         <div>
             <DisplayNominatedMovie 
                 nominatedMovie={this.state.nominatedMovie}
+                removeFromNomi={this.removeFromNomi}
             />
         </div>
           </div>

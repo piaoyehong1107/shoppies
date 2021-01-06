@@ -26,9 +26,7 @@ class DisplayNominatedMovie extends React.Component {
                 <TableRow>
                 <TableCell align="right">{ele.split("/")[0]}</TableCell>
                 <TableCell align="right">{ele.split("/")[1]}</TableCell>
-                <TableCell align="right"><button 
-                // onClick={()=>saveToNomi(ele)} 
-                    >Remove</button></TableCell>
+                <TableCell align="right"><button onClick={()=>this.props.removeFromNomi(ele)} >Remove</button></TableCell>
                 <TableCell align="right">
                 </TableCell>
                 </TableRow>
