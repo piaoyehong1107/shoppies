@@ -25,9 +25,8 @@ class DisplaySearchedMovie extends React.Component {
                     <TableRow>
                 <TableCell align="right">{ele.Title}</TableCell>
                 <TableCell align="right">{ele.Year}</TableCell>
-                <TableCell align="right"><button 
-                // onClick={()=>saveToNomi(ele)} 
-                    >Nominate</button></TableCell>
+                <TableCell align="right">
+                    <button onClick={()=>this.props.saveToNomi(ele)}>Nominate</button></TableCell>
                 <TableCell align="right">
                 </TableCell>
               </TableRow>

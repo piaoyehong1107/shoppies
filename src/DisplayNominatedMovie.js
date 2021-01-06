@@ -8,8 +8,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 class DisplayNominatedMovie extends React.Component {
-    render(){
+    render(){  
         if (!this.props.nominatedMovie) return null
+        console.log(this.props.nominatedMovie)
         return(
         <TableContainer component={Paper}>
           <Table >
@@ -21,17 +22,17 @@ class DisplayNominatedMovie extends React.Component {
               </TableRow>
             </TableHead>
             <TableBody>
-                {this.props.nominatedMovie.map(ele=>(
-                    <TableRow>
-                <TableCell align="right">{ele.Title}</TableCell>
-                <TableCell align="right">{ele.Year}</TableCell>
+            { this.props.nominatedMovie.map(ele=>(
+                <TableRow>
+                <TableCell align="right">{ele.split("/")[0]}</TableCell>
+                <TableCell align="right">{ele.split("/")[1]}</TableCell>
                 <TableCell align="right"><button 
                 // onClick={()=>saveToNomi(ele)} 
                     >Remove</button></TableCell>
                 <TableCell align="right">
                 </TableCell>
-              </TableRow>
-                ))}
+                </TableRow>
+            ))}
             </TableBody>
           </Table>
         </TableContainer>

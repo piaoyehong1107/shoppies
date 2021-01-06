@@ -5,9 +5,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>
-          The Shoppies' Movie Awards
-        </h1>
+        <p>
+          <h1>
+            The Shippies' Movie awards
+          </h1>
+        </p>
         <p>
          <Search />
         </p>

@@ -7,8 +7,18 @@ class Search extends React.Component {
         searchedValue: "",
         searchedMovie: null,
         nominatedMovie: []
-      };
-  
+    };
+    saveToNomi=(ele)=>{
+        localStorage.setItem([ele.Title+"/"+ele.Year],"i")
+        this.setState({
+            nominatedMovie: [...this.state.nominatedMovie, ele.Title+"/"+ele.Year]
+        })
+    }
+    componentDidMount(){
+        this.setState({
+            nominatedMovie: Object.keys(localStorage)
+        })
+    }
       fetchData = (searchedValue) => {
         const url = `http://www.omdbapi.com/?s=${searchedValue}&apikey=38e6a265&`
         fetch(
@@ -33,7 +43,7 @@ class Search extends React.Component {
       };
 
     render() {
-        console.log(this.state.searchedMovie)
+        console.log(this.state.nominatedMovie)
         return (
           <div>
             <input
@@ -49,11 +59,17 @@ class Search extends React.Component {
         <button onClick={() => this.fetchData(this.state.searchedValue)} >Search</button>
         <div>Result for </div>
         <div style={{marginBottom: '32px'}}>
-            <DisplaySearchedMovie Movie={this.state.searchedMovie} />
+            <DisplaySearchedMovie 
+                Movie={this.state.searchedMovie} 
+                nominatedMovie={this.state.nominatedMovie} 
+                saveToNomi={this.saveToNomi} 
+            />
         </div>
         <div>Nominations</div>
         <div>
-            <DisplayNominatedMovie nominatedMovie={this.state.nominatedMovie} />
+            <DisplayNominatedMovie 
+                nominatedMovie={this.state.nominatedMovie}
+            />
         </div>
           </div>
         );
